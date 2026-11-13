@@ -27,6 +27,10 @@ else
 	configure_args+=" -Dtests=disabled"
 fi
 
+pre_configure() {
+	vsed -i 's/b_ndebug=True/b_ndebug=true/' meson.build
+}
+
 post_install() {
 	vlicense LICENSE
 	vsconf example.toml
